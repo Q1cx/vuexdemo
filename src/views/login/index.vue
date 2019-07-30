@@ -28,7 +28,7 @@
   </div>
 </template>
 <script>
-import request from "@/utils/request.js";
+import { setUser } from "@/utils/auth.js";
 import { login } from "@/api/user";
 // import { request } from "http";
 export default {
@@ -56,12 +56,10 @@ export default {
       //   console.log(res);
       // }
 
-      try {
-        const data = await login(this.user);
-        console.log(data);
-      } catch (error) {
-        console.log(error);
-      }
+      const res = await login(this.user);
+      console.log(res);
+      // setUser(res.token);
+      
     }
   }
 };
